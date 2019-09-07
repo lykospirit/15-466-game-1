@@ -92,13 +92,9 @@ void MenuMode::draw(glm::uvec2 const &drawable_size) {
 			float left, right;
 			if (!item.sprite) {
 				//draw item.name as text:
-				draw_sprites.draw_text(
-					item.name, item.at, item.scale, color
-				);
-				glm::vec2 min,max;
-				draw_sprites.get_text_extents(
-					item.name, item.at, item.scale, &min, &max
-				);
+				draw_sprites.draw_text(item.name, item.at, item.scale, color);
+				glm::vec2 min, max;
+				draw_sprites.get_text_extents(&min, &max, item.name, item.at, item.scale);
 				left = min.x;
 				right = max.x;
 			} else {
@@ -114,7 +110,7 @@ void MenuMode::draw(glm::uvec2 const &drawable_size) {
 					draw_sprites.draw(*right_select, glm::vec2(right, item.at.y), item.scale);
 				}
 			}
-			
+
 		}
 	} //<-- gets drawn here!
 

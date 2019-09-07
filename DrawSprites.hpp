@@ -26,6 +26,10 @@ struct DrawSprites {
 	//Add more sprites to draw:
 	void draw(Sprite const &sprite, glm::vec2 const &center, float scale = 1.0f, glm::u8vec4 const &tint = glm::u8vec4(0xff, 0xff, 0xff, 0xff));
 
+	//Text drawing functions
+	void draw_text(std::string const &text, glm::vec2 const &anchor, float scale = 1.0f, glm::u8vec4 const &tint = glm::u8vec4(0xff, 0xff, 0xff, 0xff), glm::vec2 *new_anchor = nullptr);
+	void get_text_extents(glm::vec2 *min, glm::vec2 *max, std::string const &text, glm::vec2 const &anchor, float scale = 1.0f);
+
 	//Actually draws the sprites on deallocation:
 	~DrawSprites();
 
