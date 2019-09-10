@@ -153,9 +153,18 @@ void DrawSprites::draw_text(std::string const &text, glm::vec2 const &anchor, fl
 }
 
 void DrawSprites::get_text_extents(glm::vec2 *min, glm::vec2 *max, std::string const &text, glm::vec2 const &anchor, float scale) {
-	for (size_t pos = 0; pos < text.length(); pos++) {
-		Sprite chr = atlas.lookup(text.substr());
+  //Sets min to bottom-left, max to top-right
+  *min = anchor;
+  *max = anchor;
+  float max_height = 0.0f;
+  for (size_t pos = 0; pos < text.length(); pos++) {
+		Sprite const &chr = atlas.lookup(text.substr(pos,1));
+    if ((chr.max_px.y - chr.min_px.y) * scale >= max_height){
+      max_height = (chr.max_px.y - chr.min_px.y) * scale;
+    }
+    max->x += (chr.max_px.x - chr.min_px.x) * scale;
 	}
+  max->y += max_height;
 }
 
 DrawSprites::~DrawSprites() {

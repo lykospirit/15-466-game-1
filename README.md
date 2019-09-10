@@ -1,8 +1,8 @@
-# (TODO: your game's title)
+# Early Morning
 
-Author: (TODO: your name)
+Author: Colin Gay
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: Get up, it's time to go to work! Get yourself ready for the morning in this text adventure with two alternate endings.
 
 Screen Shot:
 
@@ -10,10 +10,12 @@ Screen Shot:
 
 How To Play:
 
-(TODO: describe the controls and (if needed) goals/strategy.)
+Up and Down arrows to move between actions.
+Enter to select an action.
 
 Art Sources:
 
-(TODO: fill in information about the sources of any artwork you used in the game that you did not draw.)
+Trade font by Jim McCann.
+Backgrounds and story by Colin Gay.
 
 This game was built with [NEST](NEST.md).

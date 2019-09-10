@@ -1,0 +1,6 @@
+inRoom:     room-bg
+inBath:     bath-bg
+inClock:    clock-bg
+inCalendar: calendar-bg
+inExit:     exit-bg
+isFinished: black-bg

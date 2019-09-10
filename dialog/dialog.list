@@ -1,0 +1,22 @@
+room/gotoBath: -inRoom +inBath "You are in the bathroom."
+room/gotoExit: ?isChecked "It's Sunday, no need to go to work!"
+room/gotoExit: ?isWashed ?isDressed -inRoom +inExit "You head to work... wait a minute! Noone's here -- it's Sunday!"
+room/gotoExit: "You can't go yet, you're not ready!"
+room/gotoClock: -inRoom +inClock "You look at the clock."
+room/gotoCalendar: -inRoom +inCalendar "You look at the calendar."
+room/interactBed: ?isChecked -inRoom +isFinished "You go back to sleep. Sundays are the best."
+room/interactBed: "You can't go back to bed! You have to get to work!"
+room/interactCloset: ?isDressed "You are already dressed."
+room/interactCloset: +isDressed "You get dressed."
+
+bath/gotoRoom: -inBath +inRoom "You leave the bathroom."
+bath/interactSink: ?isWashed "You have already washed up."
+bath/interactSink: +isWashed "You wash your face and brush your teeth. No time for makeup!"
+
+clock/gotoRoom: -inClock +inRoom ""
+clock/interactTime: "It's already 9! Time to go!"
+
+exit/interactSign: -inExit +isFinished "You head home... perhaps you should check the day next time."
+
+calendar/gotoRoom: -inCalendar +inRoom ""
+calendar/interactDate: +isChecked "Hold on, it's Sunday! You feel smart and thankful that you'd checked."

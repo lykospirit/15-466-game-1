@@ -57,9 +57,6 @@ bool MenuMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void MenuMode::update(float elapsed) {
-
-	//TODO: selection bounce update
-
 	if (background) {
 		background->update(elapsed);
 	}
@@ -85,11 +82,11 @@ void MenuMode::draw(glm::uvec2 const &drawable_size) {
 	{ //draw the menu using DrawSprites:
 		assert(atlas && "it is an error to try to draw a menu without an atlas");
 		DrawSprites draw_sprites(*atlas, view_min, view_max, drawable_size, DrawSprites::AlignPixelPerfect);
-
+    // draw_sprites.draw_text(active_text, active_text_pos, 1.0f, glm::u8vec4(0xff, 0x00, 0xff, 0xff));
 		for (auto const &item : items) {
 			bool is_selected = (&item == &items[0] + selected);
-			glm::u8vec4 color = (is_selected ? glm::u8vec4(0xff, 0x00, 0xff, 0xff) : glm::u8vec4(0xff, 0xff, 0xff, 0xff));
-			float left, right;
+			glm::u8vec4 color = (is_selected ? glm::u8vec4(0xff, 0xff, 0x00, 0xff) : glm::u8vec4(0xff, 0xff, 0xff, 0xff));
+			float left, right, height = 0.0f;
 			if (!item.sprite) {
 				//draw item.name as text:
 				draw_sprites.draw_text(item.name, item.at, item.scale, color);
@@ -97,6 +94,7 @@ void MenuMode::draw(glm::uvec2 const &drawable_size) {
 				draw_sprites.get_text_extents(&min, &max, item.name, item.at, item.scale);
 				left = min.x;
 				right = max.x;
+        height = max.y - min.y;
 			} else {
 				draw_sprites.draw(*item.sprite, item.at, item.scale, color);
 				left = item.at.x + item.scale * (item.sprite->min_px.x - item.sprite->anchor_px.x);
@@ -104,10 +102,10 @@ void MenuMode::draw(glm::uvec2 const &drawable_size) {
 			}
 			if (is_selected) {
 				if (left_select) {
-					draw_sprites.draw(*left_select, glm::vec2(left, item.at.y), item.scale);
+					draw_sprites.draw(*left_select, glm::vec2(left, item.at.y + height), item.scale);
 				}
 				if (right_select) {
-					draw_sprites.draw(*right_select, glm::vec2(right, item.at.y), item.scale);
+					draw_sprites.draw(*right_select, glm::vec2(right, item.at.y + height), item.scale);
 				}
 			}
 
