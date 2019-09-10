@@ -56,29 +56,6 @@ Dialog::Dialog(std::string const &filebase) {
     }
   }
 
-  // auto print_string_vector = [](std::vector<std::string> &v){
-  //   std::vector<std::string>::iterator s;
-  //   std::cout << v.size();
-  //   for (s = v.begin(); s != v.end(); s++){
-  //     std::cout << (*s);
-  //   }
-  //   std::cout << "|";
-  // };
-  // std::map< std::string, std::vector<Instruction> >::iterator it;
-  // std::vector<Instruction>::iterator its;
-  // for (it = rules.begin(); it != rules.end(); it++) {
-  //   std::cout << it->first << "***";
-  //   for (its = it->second.begin(); its != it->second.end(); its++) {
-  //     print_string_vector(its->pred);
-  //     print_string_vector(its->toTrue);
-  //     print_string_vector(its->toFalse);
-  //     print_string_vector(its->spriteOn);
-  //     print_string_vector(its->spriteOff);
-  //     std::cout << its->text;
-  //   }
-  //   std::cout << "***" << std::endl;
-  // }
-
   in.close();
 }
 
